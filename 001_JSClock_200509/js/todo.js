@@ -24,7 +24,7 @@ function handleDelete(event) {
   const ul = li.parentElement;
   const toDoId = li.id;
   ul.removeChild(li);
-  toDos = toDos.filter(function(toDo) {
+  toDos = toDos.filter(function (toDo) {
     return toDo.id !== parseInt(toDoId);
   });
   persistToDos();
@@ -57,7 +57,7 @@ function loadToDos() {
   const loadedToDos = localStorage.getItem("toDos");
   if (loadedToDos !== null) {
     const parsedToDos = JSON.parse(loadedToDos);
-    parsedToDos.forEach(function(toDo) {
+    parsedToDos.forEach(function (toDo) {
       addToDo(toDo.value);
     });
   }
