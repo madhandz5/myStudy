@@ -48,9 +48,14 @@ function addToDo(text) {
 
 function onSubmit(event) {
   event.preventDefault();
-  const value = input.value;
-  input.value = "";
-  addToDo(value);
+  if (input.value === "") {
+    window.alert("아무것도 입력되지 않았음");
+  } else {
+    const value = input.value;
+    input.value = "";
+    addToDo(value);
+  }
+
 }
 
 function loadToDos() {
