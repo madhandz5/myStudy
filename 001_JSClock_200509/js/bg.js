@@ -1,5 +1,4 @@
-const UNSPLASH_API_KEY =
-  "lmEUOT0pZfzT1_6op2jfPocFbaLRnfm3L_jnGat0F-g";
+const UNSPLASH_API_KEY = "lmEUOT0pZfzT1_6op2jfPocFbaLRnfm3L_jnGat0F-g";
   
 const UNSPLASH_URL = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}&query=landscape&orientation=landscape`;
 
@@ -19,12 +18,9 @@ function loadBackground() {
       body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url(${
         parsedImage.url
       })`;
-      locationContainer.innerHTML = `${parsedImage.name}, ${
-        parsedImage.city
-      }, ${parsedImage.country}`;
+      locationContainer.innerHTML = `${parsedImage.name}`;
     }
   }
-  return;
 }
 
 function saveBackground(imageUrl, city, country, name) {
@@ -37,13 +33,10 @@ function saveBackground(imageUrl, city, country, name) {
   const imageObject = {
     url: imageUrl,
     expiresOn: expirationDate,
-    city,
-    country,
-    name
+    name:name
   };
   localStorage.setItem("bg", JSON.stringify(imageObject));
   loadBackground();
-  return;
 }
 
 function getBackground() {
@@ -51,23 +44,20 @@ function getBackground() {
     .then(response => response.json())
     .then(json => {
       const image = json;
-      if (image.urls && image.urls.full && image.location) {
+      console.log(image);
+      if (image.urls.full === "" || image.location.name !== null) {
         const fullUrl = image.urls.full;
         const location = image.location;
-        const city = location.city;
-        const country = location.country;
         const name = location.name;
-        saveBackground(fullUrl, city, country, name);
+        saveBackground(fullUrl, name);
       } else {
         getBackground();
       }
     });
-  return;
 }
 
-function initApp() {
+function init() {
   loadBackground();
-  return;
 }
 
-initApp();
+init();
