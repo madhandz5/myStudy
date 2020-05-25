@@ -35,3 +35,5 @@ feature
 - 그림의 주소, 해당 그림이 촬영된 장소명, 파기되는 날짜를 localStorage에 저장합니다.
 - 재 접속 시, localStorage에 저장된 파기날짜가 현재 시간보다 과거이거나 localStorage에 키값이 없다면 새롭게 api를 호출합니다.
 - 페이지 좌 하단에는 사진의 장소명을 표시합니다.
+
+위 프로젝트의 접속 주소는 https://madhandz5.github.io/myStudy/001_JSClock_200509 입니다.
